@@ -1,0 +1,144 @@
+<html>
+<head>
+    <title>Algo Monitor</title>
+    <style>
+        td.header-cell {
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+            padding-top:2em;
+        }
+
+         td.header-cell2 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:0.8em;
+            text-align: center;
+        }
+
+        td.sub-header-cell {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:0.8em;
+            text-align: center;
+        }
+
+        rect.bar {
+            fill: #1faede;
+        }
+    </style>
+
+    <script src="d3.v4.min.js"></script>
+    <script src="algo.js"></script>
+</head>    
+
+<body onload="algoMonitor.start();">
+	<h1>Orders Stats</h1>
+    <table>
+        <tr>
+            <td>
+                <table style="width:100%">
+                    <tr>
+                        <td class="header-cell2">Total Parent Orders</td>
+                        <td class="header-cell2">Active Parent Orders</td>
+                        <td class="header-cell2">Filled Parent Orders</td>
+                        <td class="header-cell2">Total Child Orders</td>
+                        <td class="header-cell2">Active Child Orders</td>
+                        <td class="header-cell2">Filled Child Orders</td>
+                    </tr>
+                    <tr>
+                        <td class="sub-header-cell" id="th-total_parent_orders"></td>
+                        <td class="sub-header-cell" id="th-active_parent_orders"></td>
+                        <td class="sub-header-cell" id="th-filled_parent_orders"></td>
+                        <td class="sub-header-cell" id="th-total_child_orders"></td>
+                        <td class="sub-header-cell" id="th-active_child_orders"></td>
+                        <td class="sub-header-cell" id="th-filled_child_orders"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+	</table>
+	
+	<h1>Tick To Trade</h1>
+	<table>
+        <tr>
+            <td>
+                <svg id="tick_to_trade_histogram" style="width:100%" width="500" height="300"></svg>
+            </td>
+        </tr>
+    </table>
+
+	<h1>Throughput (messages/sec.)</h1>
+	<table>
+        <tr>
+            <td colspan="3">
+                <table style="width:100%">
+                    <tr>
+                        <td class="header-cell2">Upstream - Algo</td>
+                        <td class="header-cell2">Market Data - Algo</td>
+                        <td class="header-cell2">Algo - Downstream  </td>
+                        <td class="header-cell2">Dowstream - Algo</td>
+                        <td class="header-cell2">Algo - Market Data</td>
+                        <td class="header-cell2">Algo - Upstream</td>
+                    </tr>
+                    <tr>
+                        <td class="sub-header-cell" id="th-upstream_to_algo"></td>
+                        <td class="sub-header-cell" id="th-market_data_to_algo"></td>
+                        <td class="sub-header-cell" id="th-algo_to_downstream"></td>
+                        <td class="sub-header-cell" id="th-downstream_to_algo"></td>
+                        <td class="sub-header-cell" id="th-algo_to_market_data"></td>
+                        <td class="sub-header-cell" id="th-algo_to_upstream"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+	</table>
+
+	<h1>Queue Length</h1>
+	<table>
+        <tr>
+            <td class="header-cell">Upstream To Algo</td>
+            <td class="header-cell">Market Data To Algo</td>
+            <td class="header-cell">Algo To Downstream</td>
+        </tr>
+        <tr>
+            <td><svg id="ql-upstream_to_algo" width="360" height="200"></svg></td>
+            <td><svg id="ql-market_data_to_algo" width="360" height="200"></svg></td>
+            <td><svg id="ql-algo_to_downstream" width="360" height="200"></svg></td>
+        </tr>
+        <tr>
+            <td class="header-cell">Downstream To Algo</td>
+            <td class="header-cell">Algo To Market Data</td>
+            <td class="header-cell">Algo To Upstream</td>
+        </tr>
+        <tr>
+            <td><svg id="ql-downstream_to_algo" width="360" height="200"></svg></td>
+            <td><svg id="ql-algo_to_market_data" width="360" height="200"></svg></td>
+            <td><svg id="ql-algo_to_upstream" width="360" height="200"></svg></td>
+        </tr>
+    </table>
+	
+	<h1>Time In Queue</h1>
+	<table>
+        <tr>
+            <td class="header-cell">Upstream To Algo</td>
+            <td class="header-cell">Market Data To Algo</td>
+            <td class="header-cell">Algo To Downstream</td>
+        </tr>
+        <tr>
+            <td><svg id="tq-upstream_to_algo" width="360" height="200"></svg></td>
+            <td><svg id="tq-market_data_to_algo" width="360" height="200"></svg></td>
+            <td><svg id="tq-algo_to_downstream" width="360" height="200"></svg></td>
+        </tr>
+        <tr>
+            <td class="header-cell">Downstream To Algo</td>
+            <td class="header-cell">Algo To Market Data</td>
+            <td class="header-cell">Algo To Upstream</td>
+        </tr>
+        <tr>
+            <td><svg id="tq-downstream_to_algo" width="360" height="200"></svg></td>
+            <td><svg id="tq-algo_to_market_data" width="360" height="200"></svg></td>
+            <td><svg id="tq-algo_to_upstream" width="360" height="200"></svg></td>
+        </tr>
+    </table>
+
+</body>
+</html>
